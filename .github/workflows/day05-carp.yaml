@@ -1,0 +1,22 @@
+name: day05-carp
+on:
+  workflow_dispatch:
+  push:
+      branches:
+        - master
+      paths:
+        - day05/**
+
+jobs:
+  build:
+    name: AoC-day05-Carp
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.4
+    - uses: cachix/install-nix-action@v22
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+    - run: |
+        cd day05
+        ./build.sh
+        ./run.sh

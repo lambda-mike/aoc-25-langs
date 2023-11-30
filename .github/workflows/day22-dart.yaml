@@ -1,0 +1,24 @@
+name: day22-dart
+on:
+  workflow_dispatch:
+  push:
+      branches:
+        - master
+      paths:
+        - "day22/**"
+
+jobs:
+  build:
+    name: AoC-day22-dart
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v20
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+    - run: |
+        cd day22
+        ./build.sh
+        ./day22.exe
+
+

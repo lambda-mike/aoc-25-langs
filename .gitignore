@@ -1,0 +1,4 @@
+.unison*
+.direnv
+.stack-work/
+*~

@@ -1,0 +1,23 @@
+name: day16-unison
+on:
+  workflow_dispatch:
+  push:
+      branches:
+        - master
+      paths:
+        - "day16/**"
+
+jobs:
+  build:
+    name: AoC-day16-Unison
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v20
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+    - run: |
+        cd day16
+        ./build.sh
+        ./run.sh
+
